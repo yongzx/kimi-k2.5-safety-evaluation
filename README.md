@@ -11,7 +11,7 @@ The paper evaluates Kimi K2.5 across several risk domains, including **CBRNE mis
 ## Summary
 
 Kimi K2.5 is an open-weight model with frontier capabilities across a range of benchmarks, but it was released without a corresponding public safety evaluation report.
-In this work, we conduct a preliminary independent assessment of the model's dual-use capabilities and safety behaviors in both agentic and non-agentic settings, with a focus on risks that may be amplified by the powerful open-weight release.
+In this work, we conduct a preliminary independent assessment of the model's dual-use capabilities and safety behaviors in both agentic and non-agentic settings, with a focus on risks that may be amplified by the powerful open-weight models.
 
 ## Key findings
 - **CBRNE:** similar dual-use capabilities as frontier closed-source models but weaker refusals on harmful requests.
