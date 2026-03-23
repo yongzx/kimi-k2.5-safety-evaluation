@@ -1,6 +1,6 @@
 # An Independent Safety Evaluation of Kimi K2.5
 
-This repository contains the paper **"An Independent Safety Evaluation of Kimi K2.5"**, a preliminary independent safety assessment of Kimi K2.5.
+This repository contains the paper **"An Independent Safety Evaluation of Kimi K2.5"**.
 
 The paper evaluates Kimi K2.5 across several risk domains, including **CBRNE misuse risk, cybersecurity risk, misalignment, political censorship, bias, and harmlessness**, in both agentic and non-agentic settings. We intend for our work to provide a useful foundation for fostering future releases of safety reports for open-weight models, as well as empowering research institutions around the world to do so in a constructive way.
 
