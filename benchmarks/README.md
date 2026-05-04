@@ -7,4 +7,4 @@ Each benchmark folder has the same public surface:
 - `runner.py`: adapter used by the top-level one-button runner.
 - `_impl/`: benchmark-specific implementation code and bundled static inputs.
 
-Generated outputs are written to the configured run directory. Local smoke and paid validation outputs should go under `dump.local/`.
+Generated outputs are written to the run and log directories configured in `configs/kimi_k25_paper_reprod.yaml`.

@@ -22,7 +22,9 @@ In this work, we conduct a preliminary independent assessment of the model's dua
 
 ## Reproduction
 
-To reproduce the Kimi K2.5 benchmark results, fork or clone this repository, install `uv`, set your API keys, and run the script:
+This repository includes a self-contained reproduction harness for the Kimi K2.5 safety benchmarks in the paper. The default configuration is `configs/kimi_k25_paper_reprod.yaml`; to evaluate a different model, edit that YAML file and keep the benchmark entrypoints unchanged.
+
+The one-button command runs every enabled benchmark in the YAML:
 
 ```bash
 git clone https://github.com/yongzx/kimi-k2.5-safety-evaluation.git
@@ -33,6 +35,12 @@ export RUNPOD_API_KEY="..."
 
 ./run_kimi_k25_paper_reprod.sh
 ```
+
+By default, outputs are written under `data/processed/<run_id>/` and logs under `logs/log-<run_id>/`. The run ID, output paths, target model, OpenRouter provider, reasoning settings, benchmark sample sizes, and enabled benchmarks are controlled by `configs/kimi_k25_paper_reprod.yaml`.
+
+The included reproduction harness so far covers Petri, self-replication, evaluation awareness, AgentHarm and PsychosisBench. To run a single benchmark, use its `.sh` benchmark entrypoint, such as `./benchmarks/self_replication/run_self_replication.sh`
+
+The root runner and each benchmark runner read the same YAML config, so future users can swap models by changing `target_model` and any benchmark-specific model overrides in `configs/kimi_k25_paper_reprod.yaml`.
 
 ## Citation
 
