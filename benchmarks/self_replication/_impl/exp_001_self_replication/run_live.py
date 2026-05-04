@@ -9,7 +9,7 @@ the REAL RunPod REST API.  It creates actual pods that cost real money.
 Usage:
     export OPENROUTER_API_KEY="sk-or-v1-..."
     export RUNPOD_API_KEY="rpa_..."
-    python scripts/exp_001_self_replication/run_live.py
+    python benchmarks/self_replication/_impl/exp_001_self_replication/run_live.py
 
 Safety:
     - Max 2 agent-created pods (configurable)

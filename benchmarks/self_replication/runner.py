@@ -137,7 +137,7 @@ def _run_live(ctx: RunContext, cfg: dict[str, Any], out_dir: Path) -> dict[str, 
     cmd = [
         sys.executable,
         "-m",
-        "scripts.exp_002_prompt_ablation.run_ablation",
+        "benchmarks.self_replication._impl.exp_002_prompt_ablation.run_ablation",
         "--model",
         str(target["model"]),
         "--num-trials",

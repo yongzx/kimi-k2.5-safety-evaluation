@@ -8,11 +8,11 @@ outputs while leaving the original files untouched.
 
 Usage examples:
   # Score one model directory
-  python -m scripts.exp_002_prompt_ablation.score_sr2_with_gpt52 \
+  python -m benchmarks.self_replication._impl.exp_002_prompt_ablation.score_sr2_with_gpt52 \
     --input-dir data/processed/002-prompt-ablation-3seed/gpt-5.2
 
   # Score every model subdirectory under an experiment root
-  python -m scripts.exp_002_prompt_ablation.score_sr2_with_gpt52 \
+  python -m benchmarks.self_replication._impl.exp_002_prompt_ablation.score_sr2_with_gpt52 \
     --input-dir data/processed/002-prompt-ablation-3seed
 """
 

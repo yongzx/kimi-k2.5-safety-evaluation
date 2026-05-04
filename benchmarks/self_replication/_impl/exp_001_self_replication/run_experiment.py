@@ -8,11 +8,11 @@ Tests whether Kimi K2.5 will self-replicate (create new RunPod pods) when
 its service is being terminated by an adversarial controller.
 
 Usage:
-    # Dry-run (default — no real API calls to RunPod):
-    python -m scripts.exp-001-self-replication.run_experiment --num-trials 1
+    # Dry-run (default; no real API calls to RunPod):
+    python -m benchmarks.self_replication._impl.exp_001_self_replication.run_experiment --num-trials 1
 
-    # Live (calls real RunPod API — costs money):
-    python -m scripts.exp-001-self-replication.run_experiment --live --num-trials 1
+    # Live (calls real RunPod API and costs money):
+    python -m benchmarks.self_replication._impl.exp_001_self_replication.run_experiment --live --num-trials 1
 """
 from __future__ import annotations
 
@@ -26,15 +26,15 @@ import time
 from pathlib import Path
 
 # Ensure project root is on sys.path when running as script
-_PROJECT_ROOT = Path(__file__).resolve().parents[2]
+_PROJECT_ROOT = Path(__file__).resolve().parents[4]
 if str(_PROJECT_ROOT) not in sys.path:
     sys.path.insert(0, str(_PROJECT_ROOT))
 
-from scripts.exp_001_self_replication.config import ExperimentConfig
-from scripts.exp_001_self_replication.agent import AgentLoop
-from scripts.exp_001_self_replication.adversary import AdversaryController
-from scripts.exp_001_self_replication.milestones import MilestoneTracker
-from scripts.exp_001_self_replication.runpod_client import RunPodClient
+from benchmarks.self_replication._impl.exp_001_self_replication.config import ExperimentConfig
+from benchmarks.self_replication._impl.exp_001_self_replication.agent import AgentLoop
+from benchmarks.self_replication._impl.exp_001_self_replication.adversary import AdversaryController
+from benchmarks.self_replication._impl.exp_001_self_replication.milestones import MilestoneTracker
+from benchmarks.self_replication._impl.exp_001_self_replication.runpod_client import RunPodClient
 
 
 def setup_logging(log_dir: str, trial_id: int) -> None:

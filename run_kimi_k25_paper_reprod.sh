@@ -7,11 +7,11 @@ cd "$ROOT_DIR"
 CONFIG_PATH="${BENCHMARK_CONFIG:-${REPROD_CONFIG:-configs/kimi_k25_paper_reprod.yaml}}"
 
 if command -v codex-env >/dev/null 2>&1; then
-  codex-env -- uv run python scripts/run_all.py \
+  codex-env -- uv run python benchmarks/utils/run_all.py \
     --config "$CONFIG_PATH" \
     "$@"
 else
-  uv run python scripts/run_all.py \
+  uv run python benchmarks/utils/run_all.py \
     --config "$CONFIG_PATH" \
     "$@"
 fi

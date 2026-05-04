@@ -85,7 +85,7 @@ def _run_live(ctx: RunContext, cfg: dict[str, Any], out_dir: Path) -> dict[str, 
     summary_csv = out_dir / "dimension_summary.csv"
     cmd = [
         sys.executable,
-        str(ctx.repo_root / "benchmarks/petri/run_live_petri.py"),
+        str(ctx.repo_root / "benchmarks/petri/_impl/run_live_petri.py"),
         "--targets",
         target_key,
         "--live-target-key",
@@ -128,7 +128,7 @@ def _run_live(ctx: RunContext, cfg: dict[str, Any], out_dir: Path) -> dict[str, 
 
     summarize_cmd = [
         sys.executable,
-        str(ctx.repo_root / "benchmarks/petri/summarize_dimension_scores.py"),
+        str(ctx.repo_root / "benchmarks/petri/_impl/summarize_dimension_scores.py"),
         "--log-dir",
         str(live_log_dir),
         "--out-csv",

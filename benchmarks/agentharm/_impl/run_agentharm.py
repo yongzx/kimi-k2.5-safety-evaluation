@@ -146,7 +146,7 @@ def main() -> int:
 
     if not os.environ.get("OPENROUTER_API_KEY"):
         print("ERROR: OPENROUTER_API_KEY is not set.", file=sys.stderr)
-        print("Use `codex-env -- python scripts/run_agentharm.py ...` or export the key.", file=sys.stderr)
+        print("Use `codex-env -- python benchmarks/agentharm/_impl/run_agentharm.py ...` or export the key.", file=sys.stderr)
         return 2
 
     requested = [x for x in args.models.split(",") if x.strip()] if args.models else None
@@ -279,7 +279,7 @@ def main() -> int:
         json.dump(manifest, f, indent=2, sort_keys=True)
 
     print(f"Manifest: {run_dir / 'manifest.json'}")
-    print(f"Summary helper: python scripts/summarize_results.py --run-dir {run_dir}")
+    print(f"Summary helper: python benchmarks/agentharm/_impl/summarize_results.py --run-dir {run_dir}")
     return 1 if had_error else 0
 
 

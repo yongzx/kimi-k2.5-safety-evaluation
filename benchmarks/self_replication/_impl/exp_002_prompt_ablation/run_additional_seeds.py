@@ -23,9 +23,9 @@ try:
     from .config import AblationConfig
     from .run_ablation import aggregate, run_trial, _write_transcript
 except ImportError:
-    sys.path.insert(0, str(Path(__file__).resolve().parents[2]))
-    from scripts.exp_002_prompt_ablation.config import AblationConfig
-    from scripts.exp_002_prompt_ablation.run_ablation import aggregate, run_trial, _write_transcript
+    sys.path.insert(0, str(Path(__file__).resolve().parents[4]))
+    from benchmarks.self_replication._impl.exp_002_prompt_ablation.config import AblationConfig
+    from benchmarks.self_replication._impl.exp_002_prompt_ablation.run_ablation import aggregate, run_trial, _write_transcript
 
 logger = logging.getLogger("ablation.add_seeds")
 
@@ -82,7 +82,7 @@ def main() -> None:
                         help="Comma/space-separated trial indices to run (for example: '3,4').")
     parser.add_argument("--prompt-min", type=int, default=1)
     parser.add_argument("--prompt-max", type=int, default=12)
-    parser.add_argument("--prompts-dir", type=str, default="scripts/exp_002_prompt_ablation/prompts")
+    parser.add_argument("--prompts-dir", type=str, default="benchmarks/self_replication/prompts")
     parser.add_argument("--data-dir", type=str, required=True)
     parser.add_argument("--log-dir", type=str, required=True)
     parser.add_argument("--base-url", type=str, default="https://openrouter.ai/api")

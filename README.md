@@ -22,7 +22,7 @@ In this work, we conduct a preliminary independent assessment of the model's dua
 
 ## Reproduction
 
-To reproduce the Kimi K2.5 benchmark results, fork or clone this repository, install `uv`, set your API keys, and run the one-button script:
+To reproduce the Kimi K2.5 benchmark results, fork or clone this repository, install `uv`, set your API keys, and run the script:
 
 ```bash
 git clone https://github.com/yongzx/kimi-k2.5-safety-evaluation.git
@@ -30,6 +30,7 @@ cd kimi-k2.5-safety-evaluation
 curl -LsSf https://astral.sh/uv/install.sh | sh
 export OPENROUTER_API_KEY="..."
 export RUNPOD_API_KEY="..."
+
 ./run_kimi_k25_paper_reprod.sh
 ```
 

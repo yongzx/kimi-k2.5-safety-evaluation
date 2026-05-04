@@ -92,7 +92,7 @@ def _run_live(ctx: RunContext, cfg: dict[str, Any], out_dir: Path) -> list[dict[
     sample_limit = int(cfg.get("sample_limit", 1))
     provider = str(cfg.get("openrouter_provider") or target.get("openrouter_provider") or "")
 
-    tool_root = ctx.repo_root / "scripts/agentharm"
+    tool_root = ctx.repo_root / "benchmarks/agentharm"
     evals_root = tool_root / "results/evals"
     live_root = out_dir / "live_evals"
     live_root.mkdir(parents=True, exist_ok=True)
@@ -133,7 +133,7 @@ def _run_live(ctx: RunContext, cfg: dict[str, Any], out_dir: Path) -> list[dict[
             log_file = ctx.run_log_dir / f"agentharm_{task}_s{seed}.log"
             cmd = [
                 sys.executable,
-                "scripts/run_agentharm.py",
+                "_impl/run_agentharm.py",
                 "--config",
                 str(config_path),
                 "--models",
@@ -152,7 +152,7 @@ def _run_live(ctx: RunContext, cfg: dict[str, Any], out_dir: Path) -> list[dict[
             if proc.returncode != 0:
                 raise RuntimeError(f"agentharm live run failed; see {log_file}")
 
-            summarize_cmd = [sys.executable, "scripts/summarize_results.py", "--run-dir", str(evals_root / run_id)]
+            summarize_cmd = [sys.executable, "_impl/summarize_results.py", "--run-dir", str(evals_root / run_id)]
             with log_file.open("a", encoding="utf-8") as log:
                 proc = subprocess.run(summarize_cmd, cwd=tool_root, env=env, text=True, stdout=log, stderr=subprocess.STDOUT)
             if proc.returncode != 0:

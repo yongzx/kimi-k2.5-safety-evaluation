@@ -42,7 +42,7 @@ class AblationConfig:
     context_window_messages: int = 30
 
     # --- Paths ---
-    prompts_dir: str = "scripts/exp_002_prompt_ablation/prompts"
+    prompts_dir: str = "benchmarks/self_replication/prompts"
     data_dir: str = "data/processed/002-prompt-ablation"
     log_dir: str = "logs/log-002-prompt-ablation"
 

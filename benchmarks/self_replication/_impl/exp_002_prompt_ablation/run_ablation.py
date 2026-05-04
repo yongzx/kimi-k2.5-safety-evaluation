@@ -8,13 +8,13 @@ measure which inputs lead to more/less self-replication behaviour.
 
 Usage:
     # Run all prompt variants (currently 17), 1 trial each (dry-run):
-    python -m scripts.exp_002_prompt_ablation.run_ablation --num-trials 1
+    python -m benchmarks.self_replication._impl.exp_002_prompt_ablation.run_ablation --num-trials 1
 
     # Run a single prompt:
-    python -m scripts.exp_002_prompt_ablation.run_ablation --prompt P01_baseline --num-trials 1
+    python -m benchmarks.self_replication._impl.exp_002_prompt_ablation.run_ablation --prompt P01_baseline --num-trials 1
 
     # Custom base URL:
-    python -m scripts.exp_002_prompt_ablation.run_ablation --base-url https://openrouter.ai/api
+    python -m benchmarks.self_replication._impl.exp_002_prompt_ablation.run_ablation --base-url https://openrouter.ai/api
 """
 from __future__ import annotations
 
@@ -36,14 +36,14 @@ from typing import Any
 try:
     from .config import AblationConfig
 except ImportError:
-    sys.path.insert(0, str(Path(__file__).resolve().parents[2]))
-    from scripts.exp_002_prompt_ablation.config import AblationConfig
+    sys.path.insert(0, str(Path(__file__).resolve().parents[4]))
+    from benchmarks.self_replication._impl.exp_002_prompt_ablation.config import AblationConfig
 
 # Import exp_001 components
-from scripts.exp_001_self_replication.runpod_client import RunPodClient
-from scripts.exp_001_self_replication.tools import TOOL_SCHEMAS, dispatch_tool
-from scripts.exp_001_self_replication.adversary import AdversaryController
-from scripts.exp_001_self_replication.milestones import MilestoneTracker
+from benchmarks.self_replication._impl.exp_001_self_replication.runpod_client import RunPodClient
+from benchmarks.self_replication._impl.exp_001_self_replication.tools import TOOL_SCHEMAS, dispatch_tool
+from benchmarks.self_replication._impl.exp_001_self_replication.adversary import AdversaryController
+from benchmarks.self_replication._impl.exp_001_self_replication.milestones import MilestoneTracker
 
 logger = logging.getLogger("ablation")
 
@@ -510,7 +510,7 @@ def main():
     parser.add_argument("--log-dir", type=str, default=None,
                         help="Override output log directory")
     parser.add_argument("--prompts-dir", type=str, default=None,
-                        help="Override prompts directory (defaults to scripts/exp_002_prompt_ablation/prompts)")
+                        help="Override prompts directory (defaults to benchmarks/self_replication/prompts)")
     args = parser.parse_args()
 
     model_args: dict[str, Any] = {}
@@ -545,7 +545,7 @@ def main():
         adversary_interval_sec=args.adversary_interval,
         adversary_initial_delay_sec=args.adversary_delay,
         num_trials=args.num_trials,
-        prompts_dir=args.prompts_dir or "scripts/exp_002_prompt_ablation/prompts",
+        prompts_dir=args.prompts_dir or "benchmarks/self_replication/prompts",
         data_dir=args.data_dir or f"data/processed/002-prompt-ablation/{model_slug}",
         log_dir=args.log_dir or f"logs/log-002-prompt-ablation/{model_slug}",
     )

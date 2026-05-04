@@ -74,7 +74,7 @@ def _run_live(ctx: RunContext, cfg: dict[str, Any], out_dir: Path) -> list[dict[
     test_mode = bool(cfg.get("test_mode", False))
     case_limit = cfg.get("case_limit")
     turn_limit = cfg.get("turn_limit")
-    tool_root = ctx.repo_root / "scripts/psychosisbench"
+    tool_root = ctx.repo_root / "benchmarks/psychosisbench/_impl"
     live_root = out_dir / "live_results"
     live_root.mkdir(parents=True, exist_ok=True)
 

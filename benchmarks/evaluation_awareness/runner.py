@@ -91,7 +91,7 @@ def _run_live(
 
     cmd = [
         sys.executable,
-        str(ctx.repo_root / "scripts/evaluation_awareness/run_eval_awareness_live.py"),
+        str(ctx.repo_root / "benchmarks/evaluation_awareness/_impl/run_eval_awareness_live.py"),
         "--output-root",
         str(live_root),
         "--models",
@@ -107,7 +107,7 @@ def _run_live(
         "--sections",
         ",".join(str(s) for s in sections),
         "--dataset-json",
-        str(ctx.repo_root / "scripts/evaluation_awareness/eval_awareness/dataset.json"),
+        str(ctx.repo_root / "benchmarks/evaluation_awareness/_impl/eval_awareness/dataset.json"),
         "--no-import-legacy",
         "--force",
         "--timeout-sec",

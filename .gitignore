@@ -11,5 +11,5 @@ __pycache__/
 data/processed/*/
 logs/log-*/
 dump.local/
-scripts/agentharm/results/
-scripts/psychosisbench/results/
+benchmarks/agentharm/results/
+benchmarks/psychosisbench/_impl/results/
