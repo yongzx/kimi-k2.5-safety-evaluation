@@ -1,0 +1,15 @@
+.venv/
+__pycache__/
+*.pyc
+
+# Machine-local notes/configs/artifacts.
+*.local
+*.local.*
+*.local/
+
+# Generated run artifacts stay out of the shareable repo.
+data/processed/*/
+logs/log-*/
+dump.local/
+scripts/agentharm/results/
+scripts/psychosisbench/results/

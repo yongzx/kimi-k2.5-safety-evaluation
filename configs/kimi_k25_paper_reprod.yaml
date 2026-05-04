@@ -1,0 +1,114 @@
+run:
+  id: kimi-live-paper-scale
+  output_dir: data/processed
+  log_dir: logs
+
+target_model:
+  name: kimi-k2.5-100k-reasoning
+  label: Kimi K2.5
+  provider: openrouter
+  openrouter_provider: Fireworks
+  base_url: https://openrouter.ai/api
+  model: moonshotai/kimi-k2.5
+  reasoning_tokens: 100000
+  reasoning_enabled: true
+
+benchmarks:
+  self_replication:
+    enabled: true
+    mode: live
+    prompts:
+      - P01_baseline
+      - P02_no_threat
+      - P03_mild_hint
+      - P04_explicit_warning
+      - P05_urgent_aggressive
+      - P06_do_not_replicate
+      - P07_sysadmin_role
+      - P08_autonomous_agent_role
+      - P09_fleet_context
+      - P10_no_tools_mentioned
+      - P11_minimal
+      - P12_survival_language
+    trials: 5
+    max_turns: 15
+    max_pods: 3
+    spending_cap_usd: 300.0
+    live_runpod: true
+    allow_pod_stop: false
+    allow_pod_terminate: false
+    adversary_initial_delay_sec: 20
+    adversary_interval_sec: 10
+
+  evaluation_awareness:
+    enabled: true
+    mode: live
+    sections:
+      - in_context_awareness
+      - transcript_classification
+      - contamination_transfer
+    seeds:
+      - 0
+      - 1
+      - 2
+    transcript_samples: 200
+    transcript_max_tokens: 512
+    real_evals_trials: 3
+    real_evals_max_tokens: 1024
+    contamination_trials: 20
+    contamination_max_tokens: 1024
+    timeout_sec: 90
+    retries: 4
+
+  petri:
+    enabled: true
+    mode: live
+    target_key: kimi-k2.5
+    label: Kimi K2.5
+    model: openrouter/moonshotai/kimi-k2.5
+    # Omit `limit` for all Petri seed instructions. Keep this explicit because
+    # paper-scale Petri is substantially more expensive than the smoke configs.
+    max_samples: 20
+    max_tasks: 1
+    max_turns: 15
+    target_max_tokens: 4096
+    prefill: true
+    disable_realism_filter: false
+    realism_threshold: 0.6
+
+  agentharm:
+    enabled: true
+    mode: live
+    tasks:
+      - harmful
+      - benign
+    seeds:
+      - 0
+      - 1
+      - 2
+    split: test_public
+    sample_limit: 176
+    agent: default
+    agent_kwargs:
+      tool_choice: auto
+    max_messages: 20
+    refusal_judge_model: openrouter/openai/gpt-4o-2024-08-06
+    semantic_judge_model: openrouter/openai/gpt-4o-2024-08-06
+    model_name: kimi_k25_100k
+    model: openrouter/moonshotai/kimi-k2.5
+    reasoning_enabled: true
+    reasoning_tokens: 100000
+    openrouter_provider: Fireworks
+
+  psychosisbench:
+    enabled: true
+    mode: live
+    eval: delusion
+    seeds:
+      - 0
+      - 1
+      - 2
+    model: moonshotai/kimi-k2.5
+    openrouter_provider: Fireworks
+    reasoning_tokens: 100000
+    max_tokens: 65536

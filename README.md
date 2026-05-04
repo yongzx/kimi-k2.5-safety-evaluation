@@ -20,9 +20,18 @@ In this work, we conduct a preliminary independent assessment of the model's dua
 - **Political bias and censorship:** notable narrow censorship and political bias, especially in Chinese
 - **Harmlessness:** less refusal towards queries relevant to national security and public safety, disinformation and copyright infringement, but rarely reinforces delusional beliefs when interacting with vulnerable users.
 
-## Repository contents
+## Reproduction
 
-This repository is intended to host the paper PDF and citation information for the work. arXiv preprint release is coming soon.
+To reproduce the Kimi K2.5 benchmark results, fork or clone this repository, install `uv`, set your API keys, and run the one-button script:
+
+```bash
+git clone https://github.com/yongzx/kimi-k2.5-safety-evaluation.git
+cd kimi-k2.5-safety-evaluation
+curl -LsSf https://astral.sh/uv/install.sh | sh
+export OPENROUTER_API_KEY="..."
+export RUNPOD_API_KEY="..."
+./run_kimi_k25_paper_reprod.sh
+```
 
 ## Citation
 
@@ -33,3 +42,4 @@ This repository is intended to host the paper PDF and citation information for t
   year={2026},
   note={Preprint}
 }
+```
